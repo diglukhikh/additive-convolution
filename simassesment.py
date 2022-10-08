@@ -15,7 +15,7 @@ k = [2,2,4,4,4,4,4,2,2,2,2,2,2,2,2,2] #размеры векторов по ка
 print(vesa.shape)
 
 
-train = numpy.loadtxt('/Users/Public/files/proba1111.csv', delimiter=",")
+train = numpy.loadtxt('/Users/Public/files/proba1111.csv', delimiter=",") #обращаемся к файлу с примерами
 shape = train.shape[0]
 #print(s1)
 
@@ -38,14 +38,9 @@ for sss in range(600):
     sim = numpy.array([(numpy.around(1-sum(itog), decimals=3))])
     d = numpy.concatenate((s, train[sss*1].astype(int),sim), axis=0)
     print(d)
-    with open('/Users/Public/files/train.csv', 'a', newline='') as f_object:
-        # Pass the CSV  file object to the writer() function
+    with open('/Users/Public/files/train.csv', 'a', newline='') as f_object: #записываем в файл вектор со схожестью
         writer_object = writer(f_object)
-        # Result - a writer object
-        # Pass the data in the list as an argument into the writerow() function
         writer_object.writerow(d)
-        # writer_object.writerow(vector1+sum(vector,[])+[sim])
-        # Close the file object
         f_object.close()
 
 
